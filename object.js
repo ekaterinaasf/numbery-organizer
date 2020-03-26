@@ -81,7 +81,7 @@ const object = {
       //this.numberyStrings.filter(el => Number(el) === 0 || Number(el) === -0 || el === "");
       let arr = [];
       this.numberyStrings.forEach(el => {
-        if (el => Number(el) === 0 || Number(el) === -0 || el === "") {
+        if (Number(el) === 0 || Number(el) === -0 || el === "") {
           arr.push(el);
         }
       });
