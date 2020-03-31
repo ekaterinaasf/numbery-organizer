@@ -11,7 +11,8 @@ const object = {
     }
   },
   addString: function(param) {
-    if (typeof param == "String" || typeof param == "string") {
+    //if (typeof param === "String" || typeof param === "string") {
+    if (typeof param === "string") {
       if (isNaN(param)) {
         this.NaNyStrings.push(param);
       } else {
@@ -28,7 +29,9 @@ const object = {
     } else if (this.NaNyStrings.length == 0) {
       return this.numberyStrings;
     } else {
-      return this.numberyStrings.concat(this.NaNyStrings);
+      //it's also possible to use spread operator
+      return [...this.numberyStrings, ...this.NaNyStrings];
+      //return this.numberyStrings.concat(this.NaNyStrings);
     }
   },
   evenStrings: function() {
@@ -36,6 +39,8 @@ const object = {
       return this.numberyStrings;
     } else {
       let arr = [];
+      //another way
+      //return this.numberyStrings.filter((num) => num % 2 === 0); //for even strings
       this.numberyStrings.forEach(el => {
         if (Number(el) % 2 === 0) {
           arr.push(el);
@@ -65,6 +70,8 @@ const object = {
     });*/
   },
   positiveStrings: function() {
+    //If I don't use last comparison, last test doesn't pass
+    //return this.numberyStrings.filter(el => Number(el) > 0);
     return this.numberyStrings.filter(el => Number(el) > 0 || el == "");
     /*let arr = [];
     this.numberyStrings.forEach(el => {
@@ -81,7 +88,8 @@ const object = {
       //this.numberyStrings.filter(el => Number(el) === 0 || Number(el) === -0 || el === "");
       let arr = [];
       this.numberyStrings.forEach(el => {
-        if (Number(el) === 0 || Number(el) === -0 || el === "") {
+        //if (Number(el) === 0 || Number(el) === -0 || el === "") {
+        if (Number(el) === 0) {
           arr.push(el);
         }
       });
